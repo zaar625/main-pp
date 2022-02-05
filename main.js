@@ -19,6 +19,7 @@
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section1"),
                 centerMessage: document.querySelector('.section1-wrap .Main-title'),
+                subMessage:document.querySelector('.section1-wrap p'),
                 imageTransition1:document.querySelector('.sec1-image1'),
                 imageTransition2:document.querySelector('.sec1-image2'),
                 imageTransition3:document.querySelector('.sec1-image3'),
@@ -27,16 +28,18 @@
             values:{//[시작값,끝값,{구간}]
                 centerMessage_translateX_in:[0,-120, {start: 0, end:0.6}],
                 centerMessage_opacity_in:[1,0,{start: 0, end:0.6}],
-                
-                image1_transition_top:[10,50,{start:0,end:0.3}], 
-                image1_transition_right:[8,50,{start:0,end:0.3}],
-                image1_transition_rotate_r:[0,24,{start:0,end:0.2}],
-                image1_transition_rotate_1:[0,0,{start:0.2,end:0.3}],
+                subMessage_opacity:[1,0,{start:0.1, end: 0.3}],
 
-                image2_transition_top:[38,50,{start:0,end:0.3}], 
-                image2_transition_right:[0,50,{start:0,end:0.3}],
+                image1_opacity:[1,0,{start:0.5,end:0.65}],
+                image1_transition_rotate_r:[0,20,{start:0,end:0.25}],
+                image1_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+                image1_transition_top:[10,50,{start:0,end:0.5}], 
+                image1_transition_right:[8,50,{start:0,end:0.5}],
+
+                image2_transition_top:[38,50,{start:0,end:0.5}], 
+                image2_transition_right:[0,50,{start:0,end:0.5}],
                 
-                image_transform_center:[0,50,{start:0,end:0.3}]  
+                image_transform_center:[0,50,{start:0,end:0.5}]  
             }
         },
         {
@@ -53,6 +56,14 @@
                 videoImageCount:87,//이미지 개수
                 imageSequence:[0,86],//이미지 순서
             }
+        },
+        {
+            //section3
+            scrollHeight:0,
+            heightNum:6,
+             objs:{//조작할 돔 객체 모음
+                container: document.querySelector(".section3"),
+             }
         }
     ]
 
@@ -127,27 +138,31 @@
         // console.log(scrollRatio)
         switch(currentScene){
             case 0:
-                if(scrollRatio <= 0.22){
-                    objs.imageTransition1.style.transform = `rotateX(${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
+                if(scrollRatio <=0.32){
+                    objs.subMessage.style.opacity = calcValues(values.subMessage_opacity, currentYOffset);
+
+                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
+
+                    // objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+
+                }else if(scrollRatio >0.3 && scrollRatio <= 0.5 ){
+                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_l, currentYOffset)}deg)`
+
+                    // objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
                 }
-                if(scrollRatio <= 0.42){
-                    // image1
+
+                if(scrollRatio <= 0.5){
                     objs.imageTransition1.style.top = `${calcValues(values.image1_transition_top, currentYOffset)}%`
 
                     objs.imageTransition1.style.right = `${calcValues(values.image1_transition_right, currentYOffset)}%`
 
-                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) `
-                    // image2
-                    objs.imageTransition2.style.top = `${calcValues(values.image2_transition_top, currentYOffset)}%`
+                    // objs.imageTransition2.style.top = `${calcValues(values.image2_transition_top, currentYOffset)}%`
 
-                    objs.imageTransition2.style.right = `${calcValues(values.image2_transition_right, currentYOffset)}%`
-
-                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
-
-
-                    // console.log(objs.imageTransition.style.right,objs.imageTransition.style.transform )
+                    // objs.imageTransition2.style.right = `${calcValues(values.image2_transition_right, currentYOffset)}%`
+                }else if (scrollRatio >0.5 && scrollRatio <= 0.7){
+                    objs.imageTransition1.style.opacity = calcValues(values.image1_opacity, currentYOffset);
                 }
-                if(scrollRatio <= 0.62){
+                if(scrollRatio <= 0.7){
                     objs.centerMessage.style.opacity = calcValues(values.centerMessage_opacity_in, currentYOffset);
                     objs.centerMessage.style.transform = `translate3d(${calcValues(values.centerMessage_translateX_in, currentYOffset)}%, 0, 0)`;
                 }

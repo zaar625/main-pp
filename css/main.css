@@ -25,10 +25,9 @@ header{
 	width: 100%;
 	top: 15px;
 	z-index: 10;
-	padding: 20px;
 }
 header .global-nav{
-	max-width: 1000px;
+	max-width: 90%;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
@@ -50,6 +49,7 @@ header .global-nav{
 .section1-wrap{
 	position: fixed;
 	top: 50%;
+	left: 5%;
 	transform: translateY(-50%);
 }
 .section1-wrap > h1{
@@ -83,6 +83,7 @@ header .global-nav{
 	top: 38%;
 	right: 0;
 	z-index: 4;
+	display: none;
 }
 /* .introImage-wrap .sec1-image3{
 	background-image: url('../img/movieImage.png');	
@@ -101,6 +102,27 @@ header .global-nav{
 	position: sticky;
 	top: -100%;
 }
+.intro{
+	width: 100%;
+	position: fixed;
+	top: 50vh;
+	transform: translateY(-50%);
+	opacity: 1;
+	animation-name: intro ;
+}
+
+.intro-wrap{
+	margin: 0 auto;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.intro-wrap > div{
+	width: 30%;
+}
+
+
 .section2{
 	position: relative;
 }
@@ -113,8 +135,9 @@ header .global-nav{
 }
 
 /*section3 */
-.section3 h1{
-	text-align: center;
+.section3-wrap{
+	position: sticky;
+	top: 20vh;
 }
 .section3 .device-wrap{
 	width: 80%;
@@ -122,7 +145,7 @@ header .global-nav{
 	justify-content: space-between;
 	margin: 0 auto;
 }
-.section3 .device-wrap > div{
+.device-wrap > div{
 	padding: 3%;
 }
 .device-wrap > img{
