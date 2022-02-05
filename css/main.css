@@ -1,0 +1,131 @@
+
+html {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	scroll-behavior: smooth;
+}
+body {
+	/* min-width: 1024px; */
+	overflow-x: hidden;
+	color: white;
+	letter-spacing: -0.05em;
+	background: rgb(0, 0, 0);
+	height: 10000px;
+}
+/* .container{
+	overflow-x: hidden;
+} */
+a {
+	color: white;
+	text-decoration: none;
+}
+/* header css */
+header{
+	position: fixed;
+	width: 100%;
+	top: 15px;
+	z-index: 10;
+	padding: 20px;
+}
+header .global-nav{
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.logo{
+	font-size: 35px;
+	font-weight: 900;
+}
+.nav ul {
+	display: flex;
+}
+.nav ul > li {
+	margin-left: 7vw;
+}
+
+/* section1 */
+
+.section1-wrap{
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.section1-wrap > h1{
+	font-size: 7vw;
+	white-space: nowrap;
+}
+.section1-wrap > p {
+	margin-top: 50px;
+}
+.section1 > p {
+	position: fixed;
+	left: 0;
+	bottom: 10px;
+}
+.introImage-wrap > div{
+	width: 355px;
+	height: 450px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	position: fixed;
+}
+.introImage-wrap .sec1-image1{
+	top: 10%;
+	right: 8%;
+	/* transform: translate(50%,-50%); */
+	z-index: 3;
+	background-image: url('../img/movieImage.png');	
+}
+.introImage-wrap .sec1-image2{
+	background-image: url('../img/movieImage.png');	
+	top: 38%;
+	right: 0;
+	z-index: 4;
+}
+/* .introImage-wrap .sec1-image3{
+	background-image: url('../img/movieImage.png');	
+	left: 50%;
+    top: 20%;
+} */
+/* .introImage-wrap .sec1-image4{
+	background-image: url('../img/movieImage.png');	
+	
+} */
+.iphoneImage{
+	padding-top: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: sticky;
+	top: -100%;
+}
+.section2{
+	position: relative;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 26vh;
+}
+
+/*section3 */
+.section3 h1{
+	text-align: center;
+}
+.section3 .device-wrap{
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+}
+.section3 .device-wrap > div{
+	padding: 3%;
+}
+.device-wrap > img{
+	width: 35%;
+}
+
