@@ -2,7 +2,7 @@
 postition: stick 는 부모컨테이너 기준이다.
 
 ##check List
-#####section1 
+#####section1 구현
 - [x]  디자인 구현 구상 
 - [x]  center Massege 스크롤 값에 따른 이동 구현
 - [x]  image4개 스크롤 값에 따라 뷰포트 정중앙에 이동
@@ -10,3 +10,7 @@ postition: stick 는 부모컨테이너 기준이다.
     - [ ] 각도까지 디테일하게 구현하기
 - [x]  해당 섹션만 아이폰 고정 
 - [ ]  스크롤 값에 따라 아이폰 내부 이미지 변경
+
+#####section1 문제점
+
+- [ ] 반응형 고려시 폰 sticky 위치값이 이상함

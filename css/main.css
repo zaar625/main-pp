@@ -79,28 +79,45 @@ header .global-nav{
 	background-image: url('../img/movieImage.png');	
 }
 .introImage-wrap .sec1-image2{
-	background-image: url('../img/movieImage.png');	
+	background-image: url('../img/image47.png');	
 	top: 38%;
 	right: 0;
 	z-index: 4;
-	display: none;
+
 }
-/* .introImage-wrap .sec1-image3{
-	background-image: url('../img/movieImage.png');	
-	left: 50%;
+.introImage-wrap .sec1-image3{
+	background-image: url('../img/image44.png');	
+	right: 20%;
     top: 20%;
-} */
-/* .introImage-wrap .sec1-image4{
-	background-image: url('../img/movieImage.png');	
+	z-index: 2;
+}
+.introImage-wrap .sec1-image4{
+	background-image: url('../img/image45.png');	
+	right: 13%;
+    top: 48%;
+    z-index: 3;
 	
-} */
-.iphoneImage{
-	padding-top: 100vh;
+}
+.iphoneImage-sticky{
+	margin-top: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.iphone-content{
+	overflow: hidden;
+	position: relative;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: sticky;
-	top: -100%;
+}
+
+.iphone-content > img:last-child{
+	position: absolute;
+	z-index: -1;
 }
 .intro{
 	width: 100%;
@@ -108,7 +125,6 @@ header .global-nav{
 	top: 50vh;
 	transform: translateY(-50%);
 	opacity: 1;
-	animation-name: intro ;
 }
 
 .intro-wrap{
@@ -117,6 +133,19 @@ header .global-nav{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	opacity: 0;
+	transform: translateY(50px);
+	transition: all 2s;
+}
+.intro-wrap > h1 {
+	font-size: 4vw;
+}
+.intro-wrap .intro-dec > p{
+	margin-top: 30px;
+}
+.intro-wrap.intro-show{
+	opacity: 1;
+	transform: translateY(0);
 }
 .intro-wrap > div{
 	width: 30%;
@@ -127,11 +156,12 @@ header .global-nav{
 	position: relative;
 }
 
-.wrap {
-    display: flex;
+.section2-wrap {
+	display: flex;
     justify-content: center;
     position: sticky;
-    top: 26vh;
+    top: 50vh;
+    transform: translateY(-50%);
 }
 
 /*section3 */
@@ -139,6 +169,15 @@ header .global-nav{
 	position: sticky;
 	top: 20vh;
 }
+.device-wrap{
+	opacity: 1;
+	transition: all 1s;
+}
+.device-wrap.show{	
+	opacity: 1;
+	transform: translateX(20px);
+}
+
 .section3 .device-wrap{
 	width: 80%;
 	display: flex;

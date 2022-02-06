@@ -15,7 +15,7 @@
         {
             //section1
             scrollHeight:0,
-            heightNum:5,
+            heightNum:7,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section1"),
                 centerMessage: document.querySelector('.section1-wrap .Main-title'),
@@ -38,14 +38,27 @@
 
                 image2_transition_top:[38,50,{start:0,end:0.5}], 
                 image2_transition_right:[0,50,{start:0,end:0.5}],
-                
+                image2_transition_rotate_r:[0,20,{start:0,end:0.25}],
+                image2_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+
+                image3_transition_top:[20,50,{start:0,end:0.5}], 
+                image3_transition_right:[20,50,{start:0,end:0.5}],
+                image3_transition_rotate_r:[0,20,{start:0,end:0.25}],
+                image3_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+
+                image4_transition_top:[48,50,{start:0,end:0.5}], 
+                image4_transition_right:[13,50,{start:0,end:0.5}],
+                image4_transition_rotate_r:[0,20,{start:0,end:0.25}],
+                image4_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+
+
                 image_transform_center:[0,50,{start:0,end:0.5}]  
             }
         },
         {
             //section2
             scrollHeight:0,
-            heightNum:6,
+            heightNum:8,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section2"),
                 canvas:document.querySelector('#canvas-0'),
@@ -76,7 +89,7 @@
             imgElem.src = `./img/macImage/large_${0000 + i}.jpg`;
             sectionInfo[1].objs.videoImages.push(imgElem);
         }
-        console.log(sectionInfo[1].objs.videoImages)
+        // console.log(sectionInfo[1].objs.videoImages)
     }
     setCanvasImage();
 
@@ -135,7 +148,7 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-        // console.log(scrollRatio)
+        console.log(scrollRatio)
         switch(currentScene){
             case 0:
                 if(scrollRatio <=0.32){
@@ -143,30 +156,52 @@
 
                     objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
 
-                    // objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                    
+                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
 
-                }else if(scrollRatio >0.3 && scrollRatio <= 0.5 ){
+                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+
+                }else if(scrollRatio >0.32 && scrollRatio <= 0.5 ){
                     objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_l, currentYOffset)}deg)`
 
-                    // objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+
+                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+
+                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
                 }
 
-                if(scrollRatio <= 0.5){
+                if(scrollRatio <= 0.52){
                     objs.imageTransition1.style.top = `${calcValues(values.image1_transition_top, currentYOffset)}%`
 
                     objs.imageTransition1.style.right = `${calcValues(values.image1_transition_right, currentYOffset)}%`
 
-                    // objs.imageTransition2.style.top = `${calcValues(values.image2_transition_top, currentYOffset)}%`
+                    objs.imageTransition2.style.top = `${calcValues(values.image2_transition_top, currentYOffset)}%`
 
-                    // objs.imageTransition2.style.right = `${calcValues(values.image2_transition_right, currentYOffset)}%`
+                    objs.imageTransition2.style.right = `${calcValues(values.image2_transition_right, currentYOffset)}%`
+
+                    objs.imageTransition3.style.top = `${calcValues(values.image3_transition_top, currentYOffset)}%`
+
+                    objs.imageTransition3.style.right = `${calcValues(values.image3_transition_right, currentYOffset)}%`
+
+                    objs.imageTransition4.style.top = `${calcValues(values.image4_transition_top, currentYOffset)}%`
+
+                    objs.imageTransition4.style.right = `${calcValues(values.image4_transition_right, currentYOffset)}%`
                 }else if (scrollRatio >0.5 && scrollRatio <= 0.7){
                     objs.imageTransition1.style.opacity = calcValues(values.image1_opacity, currentYOffset);
+                    document.querySelector('.intro-wrap').classList.add('intro-show')
+                
+
                 }
+             
                 if(scrollRatio <= 0.7){
                     objs.centerMessage.style.opacity = calcValues(values.centerMessage_opacity_in, currentYOffset);
                     objs.centerMessage.style.transform = `translate3d(${calcValues(values.centerMessage_translateX_in, currentYOffset)}%, 0, 0)`;
                 }
-               
+                if(scrollRatio >= 0.85){
+                    document.querySelector('.intro-wrap').classList.remove('intro-show')
+                }
                 break;
 
             case 1:
