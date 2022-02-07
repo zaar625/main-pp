@@ -58,7 +58,7 @@
         {
             //section2
             scrollHeight:0,
-            heightNum:8,
+            heightNum:6,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section2"),
                 canvas:document.querySelector('#canvas-0'),
@@ -74,9 +74,27 @@
             //section3
             scrollHeight:0,
             heightNum:6,
-             objs:{//조작할 돔 객체 모음
+            objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section3"),
-             }
+            }
+        },
+        {
+            //section4
+            scrollHeight:0,
+            heightNum:5,
+            objs:{//조작할 돔 객체 모음
+                container: document.querySelector(".section4"),
+                canvas: document.querySelector('.blend-img'),
+				context: document.querySelector('.blend-img').getContext('2d'),
+				imagesPath: [
+					'./img/blend-img.png'
+                ],
+                image: []
+            },
+            values:{
+                blendHeight: [ 0, 0, { start: 0, end: 0 } ],
+				canvas_scale: [ 0, 0, { start: 0, end: 0 } ],//블랜드 그림 스케일
+            }
         }
     ]
 
@@ -109,8 +127,9 @@
 				break;
             }
         }
-
-        const heightRatio = window.innerHeight /1080;
+        //캔버스 반응형
+        const heightRatio = window.innerHeight /786;
+        console.log(heightRatio)
         sectionInfo[1].objs.canvas.style.transform = `scale(${heightRatio})`
     }
 
@@ -148,7 +167,7 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-        console.log(scrollRatio)
+        // console.log(scrollRatio, currentYOffset)
         switch(currentScene){
             case 0:
                 if(scrollRatio <=0.32){
@@ -205,11 +224,16 @@
                 break;
 
             case 1:
-                let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
-                // console.log(sequence)
-                objs.context.drawImage(objs.videoImages[sequence],0,0);
-                console.log(objs.context.fillStyle)
-                break;
+                    let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
+                    console.log(sequence)
+                    objs.context.drawImage(objs.videoImages[sequence],0,0);
+                if(scrollRatio >= 0.5){
+                   document.querySelector('.sec2-dec').classList.add('sec2-dec-show');
+                
+                }
+            case 3:     
+            
+           
         }
 
     }
@@ -252,6 +276,9 @@
 
     window.addEventListener('load',()=>{
         setLayout();
+
+        //캔번스 미리 그리기
+        sectionInfo[1].objs.context.drawImage(sectionInfo[1].objs.videoImages[0], 0, 0);
         //scroll event
         window.addEventListener('scroll',()=>{
             yOffset = parseInt(window.pageYOffset);

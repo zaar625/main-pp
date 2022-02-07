@@ -70,6 +70,7 @@ header .global-nav{
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: fixed;
+	display: none;
 }
 .introImage-wrap .sec1-image1{
 	top: 10%;
@@ -153,41 +154,46 @@ header .global-nav{
 
 
 .section2{
-	position: relative;
+	background: gray;
 }
-
+.section2 .sec2-sticky{
+	position: sticky;
+	top: 90%;
+}
 .section2-wrap {
 	display: flex;
     justify-content: center;
-    position: sticky;
-    top: 50vh;
-    transform: translateY(-50%);
+    position: relative;
+    top: -68vh;
+}
+.sec2-dec {
+	width: 100%;
+    display: flex;
+    padding: 0px 7vw;
+    justify-content: space-between;
+    position: absolute;
+    color: black;
+    top: 50%;
+	transform: translateY(50px);
+	opacity: 0;
+	transition: all 2s;
+}
+.sec2-dec.sec2-dec-show{
+	opacity: 1;
+	transform:translateY(0px);
+}
+.sec2-dec >div{
+	width: 30%;
 }
 
 /*section3 */
 .section3-wrap{
-	position: sticky;
-	top: 20vh;
+	width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
-.device-wrap{
-	opacity: 1;
-	transition: all 1s;
-}
-.device-wrap.show{	
-	opacity: 1;
-	transform: translateX(20px);
-}
-
-.section3 .device-wrap{
-	width: 80%;
+.section3-wrap .device-wrap{
 	display: flex;
 	justify-content: space-between;
-	margin: 0 auto;
 }
-.device-wrap > div{
-	padding: 3%;
-}
-.device-wrap > img{
-	width: 35%;
-}
-
