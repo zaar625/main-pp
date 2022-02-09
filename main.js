@@ -33,21 +33,21 @@
                 image1_opacity:[1,0,{start:0.5,end:0.65}],
                 image1_transition_rotate_r:[0,20,{start:0,end:0.25}],
                 image1_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
-                image1_transition_top:[10,50,{start:0,end:0.5}], 
-                image1_transition_right:[8,50,{start:0,end:0.5}],
+                image1_transition_top:[10,49.9,{start:0,end:0.5}], 
+                image1_transition_right:[8,49.9,{start:0,end:0.5}],
 
-                image2_transition_top:[38,50,{start:0,end:0.5}], 
-                image2_transition_right:[0,50,{start:0,end:0.5}],
+                image2_transition_top:[38,49.9,{start:0,end:0.5}], 
+                image2_transition_right:[0,49.9,{start:0,end:0.5}],
                 image2_transition_rotate_r:[0,20,{start:0,end:0.25}],
                 image2_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
 
-                image3_transition_top:[20,50,{start:0,end:0.5}], 
-                image3_transition_right:[20,50,{start:0,end:0.5}],
+                image3_transition_top:[20,49.9,{start:0,end:0.5}], 
+                image3_transition_right:[20,49.9,{start:0,end:0.5}],
                 image3_transition_rotate_r:[0,20,{start:0,end:0.25}],
                 image3_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
 
-                image4_transition_top:[48,50,{start:0,end:0.5}], 
-                image4_transition_right:[13,50,{start:0,end:0.5}],
+                image4_transition_top:[48,49.9,{start:0,end:0.5}], 
+                image4_transition_right:[13,49.9,{start:0,end:0.5}],
                 image4_transition_rotate_r:[0,20,{start:0,end:0.25}],
                 image4_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
 
@@ -73,7 +73,7 @@
         {
             //section3
             scrollHeight:0,
-            heightNum:6,
+            heightNum:3,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section3"),
             }
@@ -84,16 +84,12 @@
             heightNum:5,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section4"),
-                canvas: document.querySelector('.blend-img'),
-				context: document.querySelector('.blend-img').getContext('2d'),
-				imagesPath: [
-					'./img/blend-img.png'
-                ],
-                image: []
+                image1:document.querySelector('.sec4-position .image1'),
+                image2:document.querySelector('.sec4-position .image-iphone-mockup')
             },
             values:{
-                blendHeight: [ 0, 0, { start: 0, end: 0 } ],
-				canvas_scale: [ 0, 0, { start: 0, end: 0 } ],//블랜드 그림 스케일
+                image1_scale:[1, 0.44,{start:0.4, end: 0.7}],
+                image2_scale:[2, 0.7,{start:0.4, end: 0.7}]
             }
         }
     ]
@@ -104,7 +100,7 @@
         let imgElem;
         for (i = 0; i < sectionInfo[1].values.videoImageCount; i++){
             imgElem = new Image();
-            imgElem.src = `./img/macImage/large_${0000 + i}.jpg`;
+            imgElem.src = `./img/mac-mockup/large_${0000 + i}.jpg`;
             sectionInfo[1].objs.videoImages.push(imgElem);
         }
         // console.log(sectionInfo[1].objs.videoImages)
@@ -129,7 +125,7 @@
         }
         //캔버스 반응형
         const heightRatio = window.innerHeight /786;
-        console.log(heightRatio)
+        // console.log(heightRatio)
         sectionInfo[1].objs.canvas.style.transform = `scale(${heightRatio})`
     }
 
@@ -225,14 +221,18 @@
 
             case 1:
                     let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
-                    console.log(sequence)
+                    // console.log(sequence)
                     objs.context.drawImage(objs.videoImages[sequence],0,0);
                 if(scrollRatio >= 0.5){
                    document.querySelector('.sec2-dec').classList.add('sec2-dec-show');
                 
                 }
             case 3:     
-            
+            console.log(scrollRatio);
+            if(scrollRatio >=0.38 && scrollRatio <= 0.72){
+                objs.image1.style.transform = `scale(${calcValues(values.image1_scale, currentYOffset)})`
+                objs.image2.style.transform = `scale(${calcValues(values.image2_scale, currentYOffset)})`
+            }
            
         }
 

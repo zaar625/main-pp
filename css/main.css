@@ -65,12 +65,12 @@ header .global-nav{
 	bottom: 10px;
 }
 .introImage-wrap > div{
-	width: 355px;
+	width: 332px;
 	height: 450px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: fixed;
-	display: none;
+	/* display: none; */
 }
 .introImage-wrap .sec1-image1{
 	top: 10%;
@@ -115,10 +115,13 @@ header .global-nav{
 	position: relative;
 	display: flex;
 }
-
-.iphone-content > img:last-child{
+.iphone-content .iphone-mock{
+	z-index: 5;
+}
+.iphone-content > .iphone-inner-content{
 	position: absolute;
-	z-index: -1;
+	z-index: 4;
+	top: 100%;
 }
 .intro{
 	width: 100%;
@@ -138,8 +141,11 @@ header .global-nav{
 	transform: translateY(50px);
 	transition: all 2s;
 }
+.intro {
+	z-index: 8;
+}
 .intro-wrap > h1 {
-	font-size: 4vw;
+	font-size: 5vw;
 }
 .intro-wrap .intro-dec > p{
 	margin-top: 30px;
@@ -149,22 +155,21 @@ header .global-nav{
 	transform: translateY(0);
 }
 .intro-wrap > div{
-	width: 30%;
+	width: 20%;
 }
 
 
 .section2{
-	background: gray;
+border: solid 2px red;
 }
 .section2 .sec2-sticky{
 	position: sticky;
-	top: 90%;
+	top: 0%;
 }
 .section2-wrap {
 	display: flex;
     justify-content: center;
     position: relative;
-    top: -68vh;
 }
 .sec2-dec {
 	width: 100%;
@@ -172,7 +177,7 @@ header .global-nav{
     padding: 0px 7vw;
     justify-content: space-between;
     position: absolute;
-    color: black;
+    color:white;
     top: 50%;
 	transform: translateY(50px);
 	opacity: 0;
@@ -196,4 +201,33 @@ header .global-nav{
 .section3-wrap .device-wrap{
 	display: flex;
 	justify-content: space-between;
+}
+
+
+/* section4 */
+.section4-content{
+	min-height: 3000px;
+}
+.section4-content .sec4-sticky{
+	position: sticky;
+	top: 0;
+}
+.sec4-position{
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.sec4-position > img{
+	position: absolute;
+}
+.image1{
+	min-width: 667;
+	max-width: 1500px;
+}
+.sec4-position{
+	max-width: 1850px;
 }
