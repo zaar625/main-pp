@@ -67,7 +67,7 @@
             },
             values:{
                 videoImageCount:87,//이미지 개수
-                imageSequence:[0,86],//이미지 순서
+                imageSequence:[0,86,{start:0.2, end:0.8}],//이미지 순서
             }
         },
         {
@@ -124,8 +124,9 @@
             }
         }
         //캔버스 반응형
-        const heightRatio = window.innerHeight /786;
-        // console.log(heightRatio)
+        const heightRatio = window.innerHeight /1000;
+        console.log(window.innerHeight)
+        console.log(heightRatio)
         sectionInfo[1].objs.canvas.style.transform = `scale(${heightRatio})`
     }
 
@@ -216,19 +217,22 @@
                 }
                 if(scrollRatio >= 0.85){
                     document.querySelector('.intro-wrap').classList.remove('intro-show')
+                    document.querySelector('.introImage-wrap').style.display = 'none'
                 }
                 break;
 
             case 1:
+                if(scrollRatio >=0.2 && scrollRatio <= 0.8){
                     let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
                     // console.log(sequence)
-                    objs.context.drawImage(objs.videoImages[sequence],0,0);
+                    objs.context.drawImage(objs.videoImages[sequence],0,0)
+                }
                 if(scrollRatio >= 0.5){
                    document.querySelector('.sec2-dec').classList.add('sec2-dec-show');
                 
                 }
             case 3:     
-            console.log(scrollRatio);
+            // console.log(scrollRatio);
             if(scrollRatio >=0.38 && scrollRatio <= 0.72){
                 objs.image1.style.transform = `scale(${calcValues(values.image1_scale, currentYOffset)})`
                 objs.image2.style.transform = `scale(${calcValues(values.image2_scale, currentYOffset)})`

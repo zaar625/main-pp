@@ -9,7 +9,7 @@ body {
 	overflow-x: hidden;
 	color: white;
 	letter-spacing: -0.05em;
-	background: rgb(0, 0, 0);
+	background: #171717;
 	height: 10000px;
 }
 /* .container{
@@ -138,7 +138,7 @@ header .global-nav{
 	justify-content: space-between;
 	align-items: center;
 	opacity: 0;
-	transform: translateY(50px);
+	transform: translateY(-50%);
 	transition: all 2s;
 }
 .intro {
@@ -152,7 +152,6 @@ header .global-nav{
 }
 .intro-wrap.intro-show{
 	opacity: 1;
-	transform: translateY(0);
 }
 .intro-wrap > div{
 	width: 20%;
@@ -160,7 +159,7 @@ header .global-nav{
 
 
 .section2{
-border: solid 2px red;
+border-bottom: solid 2px red;
 }
 .section2 .sec2-sticky{
 	position: sticky;
@@ -179,16 +178,24 @@ border: solid 2px red;
     position: absolute;
     color:white;
     top: 50%;
-	transform: translateY(50px);
 	opacity: 0;
 	transition: all 2s;
 }
 .sec2-dec.sec2-dec-show{
 	opacity: 1;
-	transform:translateY(0px);
+	transform: translateY(-50%);
 }
 .sec2-dec >div{
 	width: 30%;
+	text-align: center;
+}
+.inner-sec2-dec h1{
+	margin-bottom: 30px;
+	font-size: 4vw;
+}
+.inner-sec2-dec > p{
+	font-size: 1vw;
+	line-height: 22px;
 }
 
 /*section3 */
@@ -197,6 +204,13 @@ border: solid 2px red;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
+	position: sticky;
+	top: 20%;
+	justify-content: center;
+}
+.section3-wrap > h1{
+	font-size: 4vw;
+	margin-bottom: 10vh;
 }
 .section3-wrap .device-wrap{
 	display: flex;
