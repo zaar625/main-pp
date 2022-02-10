@@ -129,6 +129,7 @@ header .global-nav{
 	top: 50vh;
 	transform: translateY(-50%);
 	opacity: 1;
+	z-index: 8;
 }
 
 .intro-wrap{
@@ -138,11 +139,7 @@ header .global-nav{
 	justify-content: space-between;
 	align-items: center;
 	opacity: 0;
-	transform: translateY(-50%);
 	transition: all 2s;
-}
-.intro {
-	z-index: 8;
 }
 .intro-wrap > h1 {
 	font-size: 5vw;
@@ -157,91 +154,127 @@ header .global-nav{
 	width: 20%;
 }
 
-
+/* section 2 */
 .section2{
 border-bottom: solid 2px red;
 }
 .section2 .sec2-sticky{
 	position: sticky;
-	top: 0%;
+	top:0%;
 }
 .section2-wrap {
 	display: flex;
     justify-content: center;
     position: relative;
 }
-.sec2-dec {
-	width: 100%;
-    display: flex;
-    padding: 0px 7vw;
-    justify-content: space-between;
-    position: absolute;
-    color:white;
-    top: 50%;
+.section2-wrap .sec2-main-tit{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%,-50%);
+}
+.section2-wrap .sec2-main-tit *{
+	margin-bottom: 10px;
+}
+.section2-wrap .sec2-main-tit h3{
+	font-size: 1.5vw;
+	color: #A1A1A1;
+	opacity: 0;
+}
+.section2-wrap .sec2-main-tit h1{
+	font-size: 2.5vw;
+	opacity: 0;
+}
+.section2-wrap .react-box{
+	position: absolute;
+	left: 5%;
+	top:35vh;
+	display: flex;
+	flex-direction: column;
+	width: 25%;
 	opacity: 0;
 	transition: all 2s;
 }
-.sec2-dec.sec2-dec-show{
+.section2-wrap .react-box.reactshow{
 	opacity: 1;
-	transform: translateY(-50%);
+	top: 30vh;
 }
-.sec2-dec >div{
-	width: 30%;
+.react-box > h2{
 	text-align: center;
+    margin-bottom: 30px;
+    font-size: 2vw;
+	position: relative;
 }
-.inner-sec2-dec h1{
-	margin-bottom: 30px;
-	font-size: 4vw;
+.react-box > h2::after{
+	content: '';
+	position: absolute;
+	width: 20%;
+	top: 50%;
+	left:90%;
+	border-top: solid 2px white;
 }
-.inner-sec2-dec > p{
-	font-size: 1vw;
-	line-height: 22px;
+
+
+.section2-wrap .vue-box{
+	position: absolute;
+	right: 5%;
+	top:55vh;
+	display: flex;
+	flex-direction: column;
+	width: 25%;
+	opacity: 0;
+	transition: all 2s;
+}
+.section2-wrap .vue-box.vueshow{
+	opacity: 1;
+	top: 50vh;
+}
+.vue-box > h2{
+	text-align: center;
+    margin-bottom: 30px;
+    font-size: 2vw;
+	position: relative;
+}
+.vue-box > h2::before{
+	content: '';
+	position: absolute;
+	width: 20%;
+	top: 50%;
+	right: 90%;
+	border-top: solid 2px white;
 }
 
 /*section3 */
-.section3-wrap{
-	width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-	position: sticky;
-	top: 20%;
-	justify-content: center;
-}
-.section3-wrap > h1{
-	font-size: 4vw;
-	margin-bottom: 10vh;
-}
-.section3-wrap .device-wrap{
-	display: flex;
-	justify-content: space-between;
-}
-
-
-/* section4 */
-.section4-content{
-	min-height: 3000px;
-}
-.section4-content .sec4-sticky{
-	position: sticky;
-	top: 0;
-}
-.sec4-position{
+.sec3-wrap{
+	width: 70vw;
+	height: 70vw;
+	margin: 0 auto;
 	position: relative;
-	display: flex;
-	width: 100%;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
+	background-color: green;
+	transform: rotate(30deg);
 }
-.sec4-position > img{
+.sec3-wrap > div {
+	width: 50%;
 	position: absolute;
+	height: 50%;
 }
-.image1{
-	min-width: 667;
-	max-width: 1500px;
+.pf-1{
+	background-color: #A1A1A1;
+	bottom: 0;
 }
-.sec4-position{
-	max-width: 1850px;
+.pf-2{
+	background-color: aqua;
+	right: 0;
+}
+.pf-3{
+	background-color: violet;
+	right: 0;
+	bottom: 0;
+}
+.section3> h1{
+	transform: scale(1);
+	text-align: center;
 }

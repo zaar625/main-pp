@@ -58,38 +58,36 @@
         {
             //section2
             scrollHeight:0,
-            heightNum:6,
+            heightNum:9,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section2"),
                 canvas:document.querySelector('#canvas-0'),
                 context:document.querySelector('#canvas-0').getContext('2d'),
-                videoImages:[]
+                videoImages:[],
+                main_tit_box:document.querySelector('.sec2-main-tit'),
+                main_title1:document.querySelector('.sec2-main-tit h3'),
+                main_title2:document.querySelector('.sec2-main-tit .tit-num1'),
+                main_title3:document.querySelector('.sec2-main-tit .tit-num2'),
             },
             values:{
                 videoImageCount:87,//이미지 개수
-                imageSequence:[0,86,{start:0.2, end:0.8}],//이미지 순서
+                imageSequence:[0,86,{start:0.65, end:0.9}],//이미지 순서
+
+                main_title1_opacity_in:[0,1,{start:0.2, end:0.3}],
+                main_title1_translateY:[-40,-55,{start:0.2, end:0.3}],
+                main_title2_opacity_in:[0,1,{start:0.3, end:0.4}],
+                main_title2_translateY:[-40,-55,{start:0.3, end:0.4}],
+                main_title3_opacity_in:[0,1,{start:0.4, end:0.5}],
+                main_title3_translateY:[-40,-55,{start:0.4, end:0.5}],
+                main_tit_box_opacity:[1,0, {start:0.5, end:0.6}],
+                main_tit_box_translateY:[-55,-65,{start:0.5, end:0.6}],
+                
             }
         },
         {
-            //section3
             scrollHeight:0,
-            heightNum:3,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section3"),
-            }
-        },
-        {
-            //section4
-            scrollHeight:0,
-            heightNum:5,
-            objs:{//조작할 돔 객체 모음
-                container: document.querySelector(".section4"),
-                image1:document.querySelector('.sec4-position .image1'),
-                image2:document.querySelector('.sec4-position .image-iphone-mockup')
-            },
-            values:{
-                image1_scale:[1, 0.44,{start:0.4, end: 0.7}],
-                image2_scale:[2, 0.7,{start:0.4, end: 0.7}]
             }
         }
     ]
@@ -125,8 +123,8 @@
         }
         //캔버스 반응형
         const heightRatio = window.innerHeight /1000;
-        console.log(window.innerHeight)
-        console.log(heightRatio)
+        // console.log(window.innerHeight)
+        // console.log(heightRatio)
         sectionInfo[1].objs.canvas.style.transform = `scale(${heightRatio})`
     }
 
@@ -164,7 +162,7 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-        // console.log(scrollRatio, currentYOffset)
+        console.log(scrollRatio)
         switch(currentScene){
             case 0:
                 if(scrollRatio <=0.32){
@@ -222,21 +220,37 @@
                 break;
 
             case 1:
-                if(scrollRatio >=0.2 && scrollRatio <= 0.8){
+                if(scrollRatio >= 0.22){
+                    //메인타이틀 인터렉션
+                    objs.main_title1.style.opacity = calcValues(values.main_title1_opacity_in, currentYOffset);
+                    
+                    objs.main_title1.style.transform = `translateY(${calcValues(values.main_title1_translateY, currentYOffset)}%)` 
+                }
+                if(scrollRatio >=0.32){
+                    objs.main_title2.style.opacity = calcValues(values.main_title2_opacity_in, currentYOffset);            
+                    
+                    objs.main_title2.style.transform = `translateY(${calcValues(values.main_title2_translateY, currentYOffset)}%)` 
+                }
+                if(scrollRatio >=0.42){
+                    objs.main_title3.style.opacity = calcValues(values.main_title3_opacity_in, currentYOffset);            
+                    
+                    objs.main_title3.style.transform = `translateY(${calcValues(values.main_title3_translateY, currentYOffset)}%)` 
+                }
+                if(scrollRatio >=0.5){
+                    objs.main_tit_box.style.opacity = calcValues(values.main_tit_box_opacity, currentYOffset);            
+                    
+                    objs.main_tit_box.style.transform = `translateY(-50%, ${calcValues(values.main_tit_box_translateY, currentYOffset)}%)` 
+                }
+                if(scrollRatio >= 0.84){
+                    document.querySelector('.react-box').classList.add('reactshow');
+                    document.querySelector('.vue-box').classList.add('vueshow');
+                }
+           
+                if(scrollRatio >=0.65 && scrollRatio <= 0.9){
                     let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
-                    // console.log(sequence)
                     objs.context.drawImage(objs.videoImages[sequence],0,0)
                 }
-                if(scrollRatio >= 0.5){
-                   document.querySelector('.sec2-dec').classList.add('sec2-dec-show');
-                
-                }
-            case 3:     
-            // console.log(scrollRatio);
-            if(scrollRatio >=0.38 && scrollRatio <= 0.72){
-                objs.image1.style.transform = `scale(${calcValues(values.image1_scale, currentYOffset)})`
-                objs.image2.style.transform = `scale(${calcValues(values.image2_scale, currentYOffset)})`
-            }
+            case 3:    
            
         }
 
