@@ -85,9 +85,23 @@
             }
         },
         {
+            // section3
             scrollHeight:0,
+            heightNum:7,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section3"),
+                sec3_bg:document.querySelector('.sec3-bg'),
+                sec3_pad:document.querySelector('.sec3-pad'),
+                sec3_iphone:document.querySelector('.sec3-iphone'),
+                sec3_mac:document.querySelector('.sec3-mac')
+            },
+            values:{
+                sec3_bg_scale:[3.75,1,{start:0.3, end: 0.4}],
+                sec3_bg_translateY:[0,-11,{start:0.3, end: 0.4}],
+                sec3_mac_opacity:[0,1,{start:0.4, end: 0.5}],
+                sec3_pad_translateX:[-35, 85, {start:0.5, end: 0.6}],
+                sec3_iphone_translateY:[55, 30, {start:0.65, end: 0.7}],
+                
             }
         }
     ]
@@ -250,10 +264,25 @@
                     let sequence = Math.round(calcValues(values.imageSequence, currentYOffset));
                     objs.context.drawImage(objs.videoImages[sequence],0,0)
                 }
-            case 3:    
-           
+            case 2:    
+                if(scrollRatio >= 0.3){
+                   
+                    objs.sec3_bg.style.transform = `translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}px) scale(${calcValues(values.sec3_bg_scale, currentYOffset)})`
+                }
+                if(scrollRatio >= 0.42 && scrollRatio <= 0.52 ){
+                    objs.sec3_mac.style.opacity = calcValues(values.sec3_mac_opacity, currentYOffset)
+                }
+                if(scrollRatio >= 0.52 && scrollRatio <= 0.62){
+                    objs.sec3_pad.style.transform = `translateX(${calcValues(values.sec3_pad_translateX, currentYOffset)}%)`
+                    document.querySelector('.bg').classList.add('device-fillter-show')
+                    document.querySelector('.sec3-mac').classList.add('device-fillter-show')
+                }
+                if(scrollRatio > 0.65 && scrollRatio <= 0.72){
+                    objs.sec3_iphone.style.top = `${calcValues(values.sec3_iphone_translateY, currentYOffset)}%`
+                    document.querySelector('.sec3-pad').classList.add('device-fillter-show')
+                }
         }
-
+// translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}%)
     }
     function scrollLoop(){
         enterNewScene = false;

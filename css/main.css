@@ -155,9 +155,7 @@ header .global-nav{
 }
 
 /* section 2 */
-.section2{
-border-bottom: solid 2px red;
-}
+
 .section2 .sec2-sticky{
 	position: sticky;
 	top:0%;
@@ -248,33 +246,69 @@ border-bottom: solid 2px red;
 }
 
 /*section3 */
-.sec3-wrap{
-	width: 70vw;
-	height: 70vw;
-	margin: 0 auto;
+.sec-sticky{
+	height: 200vh;
+	position: sticky;
+	top: 0;
+	overflow: hidden;
+}
+.sec3-bg{
+	transform:scale(3);
+}
+.sec-sticky-flex-container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: relative;
-	background-color: green;
-	transform: rotate(30deg);
 }
-.sec3-wrap > div {
-	width: 50%;
-	position: absolute;
-	height: 50%;
+.bg{
+	background-image: url('../img/screen1@3x.png');
+	width: 600px;
+	height: 400px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
-.pf-1{
-	background-color: #A1A1A1;
-	bottom: 0;
+.sec3-mac{
+	background-image: url('../img/macbook2.png');
+	width: 740px;
+    height: 452px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	opacity: 0;
 }
-.pf-2{
-	background-color: aqua;
-	right: 0;
+.mobile-container{
+	width: 100%;
+	height: 100vh;
 }
-.pf-3{
-	background-color: violet;
-	right: 0;
-	bottom: 0;
+.sec3-pad{
+	background-image: url('../img/ipad-image@2x.png');
+	width: 550px;
+    height: 363px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 4%;
+    left: -35%;
+	filter:grayscale(0);
+	transition: filter 2s
+	
 }
-.section3> h1{
-	transform: scale(1);
-	text-align: center;
+.sec3-iphone{
+	background-image: url('../img/phone-image@2x.png');
+	width: 172px;
+    height: 332px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 55%;
+    right: 18%;
+}
+.device-fillter-show{
+	filter:grayscale(100%)
 }
