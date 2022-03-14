@@ -15,22 +15,25 @@
         {
             //section1
             scrollHeight:0,
-            heightNum:7,
+            heightNum:6,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section1"),
                 centerMessage: document.querySelector('.section1-wrap .Main-title'),
                 subMessage:document.querySelector('.section1-wrap p'),
+                // 메인이미지 4개
                 imageTransition1:document.querySelector('.sec1-image1'),
                 imageTransition2:document.querySelector('.sec1-image2'),
                 imageTransition3:document.querySelector('.sec1-image3'),
                 imageTransition4:document.querySelector('.sec1-image4'),
+                // about 이미지
+                imagetransY:document.querySelector('.about_me')
             },
             values:{//[시작값,끝값,{구간}]
                 centerMessage_translateX_in:[0,-120, {start: 0, end:0.6}],
                 centerMessage_opacity_in:[1,0,{start: 0, end:0.6}],
                 subMessage_opacity:[1,0,{start:0.1, end: 0.3}],
 
-                image1_opacity:[1,0,{start:0.5,end:0.65}],
+                // image1_opacity:[1,0,{start:0.5,end:0.65}],
                 image1_transition_rotate_r:[0,20,{start:0,end:0.25}],
                 image1_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
                 image1_transition_top:[10,49.9,{start:0,end:0.5}], 
@@ -38,21 +41,23 @@
 
                 image2_transition_top:[38,49.9,{start:0,end:0.5}], 
                 image2_transition_right:[0,49.9,{start:0,end:0.5}],
-                image2_transition_rotate_r:[0,20,{start:0,end:0.25}],
-                image2_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+                image2_transition_rotate_r:[0,15,{start:0,end:0.25}],
+                image2_transition_rotate_l:[15,0,{start:0.25,end:0.5}],
 
                 image3_transition_top:[20,49.9,{start:0,end:0.5}], 
                 image3_transition_right:[20,49.9,{start:0,end:0.5}],
-                image3_transition_rotate_r:[0,20,{start:0,end:0.25}],
-                image3_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+                image3_transition_rotate_r:[0,30,{start:0,end:0.25}],
+                image3_transition_rotate_l:[30,0,{start:0.25,end:0.5}],
 
                 image4_transition_top:[48,49.9,{start:0,end:0.5}], 
                 image4_transition_right:[13,49.9,{start:0,end:0.5}],
-                image4_transition_rotate_r:[0,20,{start:0,end:0.25}],
-                image4_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
+                image4_transition_rotate_r:[0,8,{start:0,end:0.25}],
+                image4_transition_rotate_l:[8,0,{start:0.25,end:0.5}],
 
 
-                image_transform_center:[0,50,{start:0,end:0.5}]  
+                image_transform_center:[0,50,{start:0,end:0.5}],
+                
+                image_transition_Y:[100,0,{start:0.6,end:0.7}]
             }
         },
         {
@@ -116,6 +121,7 @@
             sectionInfo[1].objs.videoImages.push(imgElem);
         }
         // console.log(sectionInfo[1].objs.videoImages)
+        console.log(imgElem)
     }
     setCanvasImage();
 
@@ -168,7 +174,7 @@
 
 		return rv;
     }
-
+    
     // 현재 scene에서 스크롤된 범위를 비율로 구하기
     function playAnimation(){
         const objs = sectionInfo[currentScene].objs;
@@ -179,28 +185,29 @@
         console.log(scrollRatio)
         switch(currentScene){
             case 0:
-                if(scrollRatio <=0.32){
+                if(scrollRatio <=0.25){
                     objs.subMessage.style.opacity = calcValues(values.subMessage_opacity, currentYOffset);
+                    // 이미지1
+                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
+                    // 이미지2
+                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image2_transition_rotate_r, currentYOffset)}deg)`
+                    // 이미지3
+                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image3_transition_rotate_r, currentYOffset)}deg)`
 
-                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
+                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image4_transition_rotate_r, currentYOffset)}deg)`
 
-                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
-                    
-                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                }else if(scrollRatio >0.25 && scrollRatio <= 0.53 ){
+                    //이미지1
+                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image1_transition_rotate_l, currentYOffset)}deg)`
+                    //이미지2
+                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image2_transition_rotate_l, currentYOffset)}deg)`
 
-                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image3_transition_rotate_l, currentYOffset)}deg)`
 
-                }else if(scrollRatio >0.32 && scrollRatio <= 0.5 ){
-                    objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image1_transition_rotate_l, currentYOffset)}deg)`
-
-                    objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
-
-                    objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
-
-                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0)`
+                    objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image4_transition_rotate_l, currentYOffset)}deg)`
                 }
 
-                if(scrollRatio <= 0.52){
+                if(scrollRatio <= 0.54){
                     objs.imageTransition1.style.top = `${calcValues(values.image1_transition_top, currentYOffset)}%`
 
                     objs.imageTransition1.style.right = `${calcValues(values.image1_transition_right, currentYOffset)}%`
@@ -216,13 +223,19 @@
                     objs.imageTransition4.style.top = `${calcValues(values.image4_transition_top, currentYOffset)}%`
 
                     objs.imageTransition4.style.right = `${calcValues(values.image4_transition_right, currentYOffset)}%`
-                }else if (scrollRatio >0.5 && scrollRatio <= 0.7){
+
+                    document.querySelector('.intro-wrap').classList.remove('intro-show')
+                    
+                }else if (scrollRatio >0.54 && scrollRatio <= 0.7){
                     objs.imageTransition1.style.opacity = calcValues(values.image1_opacity, currentYOffset);
                     document.querySelector('.intro-wrap').classList.add('intro-show')
-                
 
+                    objs.imagetransY.style.top = `${calcValues(values.image_transition_Y, currentYOffset)}%`
+                }else {
+                    document.querySelector('.intro-wrap').classList.remove('intro-show')
                 }
-             
+            
+            
                 if(scrollRatio <= 0.7){
                     objs.centerMessage.style.opacity = calcValues(values.centerMessage_opacity_in, currentYOffset);
                     objs.centerMessage.style.transform = `translate3d(${calcValues(values.centerMessage_translateX_in, currentYOffset)}%, 0, 0)`;
@@ -230,6 +243,8 @@
                 if(scrollRatio >= 0.85){
                     document.querySelector('.intro-wrap').classList.remove('intro-show')
                     document.querySelector('.introImage-wrap').style.display = 'none'
+                }else if(scrollRatio < 0.85){
+                    document.querySelector('.introImage-wrap').style.display = 'block'
                 }
                 break;
 
@@ -266,7 +281,6 @@
                 }
             case 2:    
                 if(scrollRatio >= 0.3){
-                   
                     objs.sec3_bg.style.transform = `translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}px) scale(${calcValues(values.sec3_bg_scale, currentYOffset)})`
                 }
                 if(scrollRatio >= 0.42 && scrollRatio <= 0.52 ){
@@ -281,7 +295,7 @@
                     objs.sec3_iphone.style.top = `${calcValues(values.sec3_iphone_translateY, currentYOffset)}%`
                     document.querySelector('.sec3-pad').classList.add('device-fillter-show')
                 }
-        }
+            }
 // translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}%)
     }
     function scrollLoop(){
@@ -326,6 +340,23 @@
 
         //캔번스 미리 그리기
         sectionInfo[1].objs.context.drawImage(sectionInfo[1].objs.videoImages[0], 0, 0);
+        
+        // 중간에서 새로고침 했을 경우 자동 스크롤로 제대로 그려주기
+        let tempYOffset = yOffset;
+        let tempScrollCount = 0;
+        if (tempYOffset > 0) {
+            //setintervalId
+            let siId = setInterval(() => {
+                scrollTo(0, tempYOffset);
+                tempYOffset += 5;
+
+                if (tempScrollCount > 20) {
+                    clearInterval(siId);
+                }
+                tempScrollCount++;
+            }, 20);
+        }
+        
         //scroll event
         window.addEventListener('scroll',()=>{
             yOffset = parseInt(window.pageYOffset);
