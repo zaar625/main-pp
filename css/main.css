@@ -130,6 +130,7 @@ header .global-nav{
 	transform: translateY(-50%);
 	opacity: 1;
 	z-index: 8;
+	
 }
 
 .intro-wrap{
@@ -150,9 +151,18 @@ header .global-nav{
 .intro-wrap.intro-show{
 	opacity: 1;
 }
-.intro-wrap > div{
+.intro-wrap .intro-dec{
 	width: 20%;
+	margin-right: 4rem;
 }
+.intro-wrap .intro-dec > h3{
+	font-size: 2.5rem;
+}
+.intro-wrap .intro-dec > p {
+	line-height: 23px;
+}
+
+
 .project-img{
 	position: absolute;
 }
