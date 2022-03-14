@@ -172,6 +172,8 @@ header .global-nav{
 	z-index: 4;
 }
 
+
+
 /* section 2 */
 
 .section2 .sec2-sticky{
@@ -329,4 +331,83 @@ header .global-nav{
 }
 .device-fillter-show{
 	filter:grayscale(100%)
+}
+
+
+@media screen and (max-width:767px){
+	/* section1 */
+
+	.section1-wrap {
+		position: fixed;
+		top: 20%;
+		left: 5%;
+		transform: translateY(-50%);
+	}
+	.section1-wrap > h1 {
+		font-size: 4rem;
+	}
+	.logo{
+		font-size: 1.25rem;
+	}
+	.iphone-content > img{
+		width: 220px;
+		height: 439px;
+	}
+	
+	.introImage-wrap > div {
+		width: 192px;
+		height: 240px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: fixed;
+	}
+	.intro-wrap .intro-dec {
+		width: 52%;
+		margin-right: 0rem;
+		background-color: #09090985;
+	}
+	.intro-wrap .intro-dec > h3 {
+		font-size: 1.5rem;
+	}
+
+
+	/* section2 */
+	.section2-wrap .sec2-main-tit h3,
+	.section2-wrap .sec2-main-tit h1,
+	.section2-wrap .sec2-main-tit h1 {
+		font-size: 2rem;
+		white-space: nowrap;
+	}
+	.section2-wrap .react-box {
+		position: absolute;
+		left: 5%;
+		top: 15vh;
+		display: flex;
+		flex-direction: column;
+		width: 40%;
+		opacity: 0;
+		transition: all 2s;
+	}
+	.section2-wrap .react-box.reactshow {
+		opacity: 1;
+		top: 10vh;
+	}
+
+	.section2-wrap .vue-box {
+		position: absolute;
+		right: 5%;
+		top: 66vh;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		opacity: 0;
+		transition: all 2s;
+	}
+	.react-box > h2, .vue-box > h2 {
+		font-size: 1.5rem;
+	}
+	.section2-wrap .vue-box.vueshow {
+		opacity: 1;
+		top: 70vh;
+	}
 }
