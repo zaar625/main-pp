@@ -66,7 +66,7 @@ header .global-nav{
 }
 .introImage-wrap > div{
 	width: 332px;
-	height: 415px;
+	height: 418px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	position: fixed;
@@ -175,6 +175,9 @@ header .global-nav{
 
 
 /* section 2 */
+.section2 {
+	background-color: #000;
+}
 
 .section2 .sec2-sticky{
 	position: sticky;
@@ -267,13 +270,13 @@ header .global-nav{
 
 /*section3 */
 .sec-sticky{
-	height: 200vh;
+	height: 100vh;
 	position: sticky;
 	top: 0;
 	overflow: hidden;
 }
 .sec3-bg{
-	transform:scale(3);
+	transform:scale(3.75);
 }
 .sec-sticky-flex-container{
 	width: 100%;
@@ -291,7 +294,7 @@ header .global-nav{
 	background-repeat: no-repeat;
 }
 .sec3-mac{
-	background-image: url('../img/macbook2.png');
+	background-image: url('../img/mac2.png');
 	width: 740px;
     height: 452px;
     background-size: contain;
@@ -331,6 +334,157 @@ header .global-nav{
 }
 .device-fillter-show{
 	filter:grayscale(100%)
+}
+.sec3-info{
+	position: absolute;
+	left: 0;
+	padding-left: 5rem;
+}
+.tablet-container {
+	width: 560px;
+	height: 370px;
+	position: absolute;
+	right: 10%;
+	bottom: 7%;
+}
+.tablet-container > img {
+	position: absolute;
+	z-index: 1;
+}
+.content-img {
+    width: 480px;
+    height: 350px;
+    margin: 1rem 2.5rem;
+    z-index: 0;
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+}
+.content-img > img {
+	position: absolute;
+}
+.content-img > img:nth-child(2){
+	top: 80%
+}
+
+/* section4 */
+.section4{
+	padding: 0 5rem;
+	height: 100vh !important;
+}
+.sec4-container {
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.sec4-title{
+	display: flex;
+	flex-direction: column;
+	font-size: 7rem;
+	font-weight: 500;
+}
+.sec4-title  .rotate{
+	transform-style: preserve-3d;
+	perspective: 100px;
+	transform: rotateX(90deg);
+	transition: transform 2s;
+}
+.animation-title{
+	display: flex;
+	align-items: center;
+}
+.animation-title > span:first-child{
+	height: 3px;
+	width: 0vw;
+	background-color: #fff;
+	margin-right: 5rem;
+	transition: width 3s;
+}
+.contact {
+	width: 340px;
+	height: 660px;
+}
+.animation-title > span:first-child.sec4-show2{
+	width: 10vw;
+}
+.sec4-title  .rotate.sec4-show1 {
+	transform: rotateX(0deg);
+}
+/* contact */
+.contact{
+	position: relative;
+	z-index: 9;
+}
+.contact-contents{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 70%;
+}
+.contact__inputs{
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 2.5rem;
+}
+.contact__content {
+	position: relative;
+	height: 3rem;
+	border-bottom: 1px solid #6d6c6c;
+}
+.contact__input {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem 1rem 0;
+    background: none;
+    color: #FFF;;
+    border: none;
+    outline: none;
+    z-index: 1;
+}
+.contact__input:focus +.contact__label {
+	top: -0.75rem;
+	left: 0;
+	font-size: var(--smaller-font-size);
+	z-index: 10;
+}
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) + .contact__label{
+	top: -.75rem;
+	font-size: var(--smaller-font-size);
+	z-index: 10;
+}
+
+.contact__label {
+    position: absolute;
+    top: 0.75rem;
+    width: 100%;
+    font-size:0.875rem;;
+    color: var(--txt-color);
+    transition: .3s;
+}
+.contact__area {
+    height: 7rem;
+}
+.contact__area textarea {
+    resize: none;
+	font-family:'Noto Sans KR', sans-serif;;
+}
+.button{
+	color: #FFF;
+	border: solid 1px #6d6c6c;
+	padding: 0.45rem;
+}
+.button:hover{
+	background-color:#6d6c6c ;
+}
+.button__icon {
+    transition: .3s;
 }
 
 
@@ -410,4 +564,16 @@ header .global-nav{
 		opacity: 1;
 		top: 70vh;
 	}
+
+	/* section3 */
+
+	.bg {
+		width: 303px;
+		height: 201px;
+	}
+	.sec3-mac {
+		width: 375px;
+		height: 229px;
+	}
+	
 }

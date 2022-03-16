@@ -92,12 +92,12 @@
         {
             // section3
             scrollHeight:0,
-            heightNum:7,
+            heightNum:5,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section3"),
                 sec3_bg:document.querySelector('.sec3-bg'),
-                sec3_pad:document.querySelector('.sec3-pad'),
-                sec3_iphone:document.querySelector('.sec3-iphone'),
+                // sec3_pad:document.querySelector('.sec3-pad'),
+                // sec3_iphone:document.querySelector('.sec3-iphone'),
                 sec3_mac:document.querySelector('.sec3-mac')
             },
             values:{
@@ -107,6 +107,14 @@
                 sec3_pad_translateX:[-35, 85, {start:0.5, end: 0.6}],
                 sec3_iphone_translateY:[55, 30, {start:0.65, end: 0.7}],
                 
+            }
+        },
+        {
+            // section 4
+            scrollHeight:0,
+            heightNum:3,
+            objs:{
+                container: document.querySelector(".section4"),
             }
         }
     ] 
@@ -188,7 +196,7 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-
+        console.log(scrollRatio,currentScene )
         switch(currentScene){
             case 0:
                 if(scrollRatio <=0.25){
@@ -298,21 +306,19 @@
                 if(scrollRatio >= 0.3){
                     objs.sec3_bg.style.transform = `translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}px) scale(${calcValues(values.sec3_bg_scale, currentYOffset)})`
                 }
-                if(scrollRatio >= 0.42 && scrollRatio <= 0.52 ){
+                if(scrollRatio >= 0.38 && scrollRatio <= 0.52 ){
                     objs.sec3_mac.style.opacity = calcValues(values.sec3_mac_opacity, currentYOffset)
                 }
-                if(scrollRatio >= 0.52 && scrollRatio <= 0.62){
-                    objs.sec3_pad.style.transform = `translateX(${calcValues(values.sec3_pad_translateX, currentYOffset)}%)`
-                    document.querySelector('.bg').classList.add('device-fillter-show')
-                    document.querySelector('.sec3-mac').classList.add('device-fillter-show')
-                }
-                if(scrollRatio > 0.65 && scrollRatio <= 0.72){
-                    objs.sec3_iphone.style.top = `${calcValues(values.sec3_iphone_translateY, currentYOffset)}%`
-                    document.querySelector('.sec3-pad').classList.add('device-fillter-show')
-                }
                 break;
+            case 3: 
+            if(scrollRatio >= 0.3){
+                document.querySelector('.animation-title > span:first-child').classList.add('sec4-show2')
+                for(let i = 0; i < document.querySelectorAll('.rotate').length; i ++)
+                document.querySelectorAll('.rotate')[i].classList.add('sec4-show1')
+                // console.log(document.querySelectorAll('.rotate'))
             }
-// translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}%)
+        }
+
     }
     function scrollLoop(){
         enterNewScene = false;
@@ -355,7 +361,6 @@
         // debugger;
         yOffset = window.pageYOffset;
         setLayout();
-        console.log(currentScene)
         //캔번스 미리 그리기
         sectionInfo[1].objs.context.drawImage(sectionInfo[1].objs.videoImages[0], 0, 0);
         
@@ -366,7 +371,7 @@
             //setintervalId
             let siId = setInterval(() => {
                 scrollTo(0, tempYOffset);
-                tempYOffset += 5;
+                tempYOffset += 10;
 
                 if (tempScrollCount > 20) {
                     clearInterval(siId);
@@ -378,7 +383,8 @@
         //scroll event
         window.addEventListener('scroll',()=>{
             yOffset = parseInt(window.pageYOffset);
-            scrollLoop();
+            console.log(yOffset)
+        scrollLoop();
 
             if (!rafState) {
                 rafId = requestAnimationFrame(loop);
