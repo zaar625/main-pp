@@ -223,6 +223,7 @@ header .global-nav{
 /* section 2 */
 .section2 {
 	background-color: #000;
+	margin-top: 2rem;
 }
 
 .section2 .sec2-sticky{
@@ -676,5 +677,35 @@ header .global-nav{
 		width: 375px;
 		height: 229px;
 	}
-	
+	.sec3-info {
+		position: absolute;
+		left: 0;
+		top: 20%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
+	.sec3-info  div {
+		left: 4%;
+	}
+	.tablet-container {
+		width: 560px;
+		height: 370px;
+		position: absolute;
+		bottom: 7%;
+		opacity: 0;
+		transition: all 2s;
+		transform: scale(0.5);
+	}
+	.tablet-container.tablet-show {
+		opacity: 1;
+		transform: translateX(13%) scale(0.5);
+	}
+	.sec4-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 100vh;
+		padding-right: 0rem;
+		flex-direction: column;
+	}
 }

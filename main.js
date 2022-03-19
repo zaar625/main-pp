@@ -35,30 +35,30 @@
                 subMessage_opacity:[1,0,{start:0.1, end: 0.24}],
 
                 // image1_opacity:[1,0,{start:0.5,end:0.65}],
-                image1_transition_rotate_r:[0,20,{start:0,end:0.25}],
-                image1_transition_rotate_l:[20,0,{start:0.25,end:0.5}],
-                image1_transition_top:[10,49.9,{start:0,end:0.5}], 
-                image1_transition_right:[8,49.9,{start:0,end:0.5}],
+                image1_transition_rotate_r:[0,20,{start:0,end:0.15}],
+                image1_transition_rotate_l:[20,0,{start:0.15,end:0.3}],
+                image1_transition_top:[10,49.9,{start:0,end:0.3}], 
+                image1_transition_right:[8,49.9,{start:0,end:0.3}],
 
-                image2_transition_top:[38,49.9,{start:0,end:0.5}], 
-                image2_transition_right:[0,49.9,{start:0,end:0.5}],
-                image2_transition_rotate_r:[0,15,{start:0,end:0.25}],
-                image2_transition_rotate_l:[15,0,{start:0.25,end:0.5}],
+                image2_transition_top:[38,49.9,{start:0,end:0.3}], 
+                image2_transition_right:[0,49.9,{start:0,end:0.3}],
+                image2_transition_rotate_r:[0,15,{start:0,end:0.15}],
+                image2_transition_rotate_l:[15,0,{start:0.15,end:0.3}],
 
-                image3_transition_top:[20,49.9,{start:0,end:0.5}], 
-                image3_transition_right:[20,49.9,{start:0,end:0.5}],
-                image3_transition_rotate_r:[0,30,{start:0,end:0.25}],
-                image3_transition_rotate_l:[30,0,{start:0.25,end:0.5}],
+                image3_transition_top:[20,49.9,{start:0,end:0.3}], 
+                image3_transition_right:[20,49.9,{start:0,end:0.3}],
+                image3_transition_rotate_r:[0,30,{start:0,end:0.15}],
+                image3_transition_rotate_l:[30,0,{start:0.15,end:0.3}],
 
-                image4_transition_top:[48,49.9,{start:0,end:0.5}], 
-                image4_transition_right:[13,49.9,{start:0,end:0.5}],
-                image4_transition_rotate_r:[0,8,{start:0,end:0.25}],
-                image4_transition_rotate_l:[8,0,{start:0.25,end:0.5}],
+                image4_transition_top:[48,49.9,{start:0,end:0.3}], 
+                image4_transition_right:[13,49.9,{start:0,end:0.3}],
+                image4_transition_rotate_r:[0,8,{start:0,end:0.15}],
+                image4_transition_rotate_l:[8,0,{start:0.15,end:0.3}],
 
 
-                image_transform_center:[0,50,{start:0,end:0.5}],
+                image_transform_center:[0,50,{start:0,end:0.3}],
                 
-                image_transition_Y:[100,0,{start:0.6,end:0.95}]
+                image_transition_Y:[100,0,{start:0.51,end:0.8}]
             }
         },
         {
@@ -81,12 +81,12 @@
 
                 main_title1_opacity_in:[0,1,{start:0.2, end:0.3}],
                 main_title1_translateY:[-40,-55,{start:0.2, end:0.3}],
-                main_title2_opacity_in:[0,1,{start:0.31, end:0.4}],
-                main_title2_translateY:[-40,-55,{start:0.31, end:0.4}],
-                main_title3_opacity_in:[0,1,{start:0.41, end:0.5}],
-                main_title3_translateY:[-40,-55,{start:0.41, end:0.5}],
-                main_tit_box_opacity:[1,0, {start:0.51, end:0.6}],
-                main_tit_box_translateY:[-55,-65,{start:0.51, end:0.6}],
+                main_title2_opacity_in:[0,1,{start:0.32, end:0.4}],
+                main_title2_translateY:[-40,-55,{start:0.32, end:0.4}],
+                main_title3_opacity_in:[0,1,{start:0.42, end:0.5}],
+                main_title3_translateY:[-40,-55,{start:0.42, end:0.5}],
+                main_tit_box_opacity:[1,0, {start:0.52, end:0.6}],
+                main_tit_box_translateY:[-55,-65,{start:0.52, end:0.6}],
                 
             }
         },
@@ -111,7 +111,7 @@
                 sec3_bg_scale:[3.75,1,{start:0.3, end: 0.4}],
                 sec3_bg_translateY:[0,-11,{start:0.3, end: 0.4}],
                 sec3_mac_opacity:[0,1,{start:0.42, end: 0.5}],
-                tablet_img_translateY:[100, 0, {start:0.76, end: 0.9}]
+                tablet_img_translateY:[100, 0, {start:0.81, end: 0.95}]
             }
         },
         {
@@ -199,13 +199,11 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-        // console.log(scrollRatio,currentScene )
+        console.log(scrollRatio,currentScene )
         switch(currentScene){
             case 0:
-                if(scrollRatio <=0.25){
-                    //서브메세지
-                    objs.subMessage.style.opacity = calcValues(values.subMessage_opacity, currentYOffset);
-                    // 이미지1
+                if(scrollRatio <=0.15){
+                    // 이미지1 
                     objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image1_transition_rotate_r, currentYOffset)}deg)`
                     // 이미지2
                     objs.imageTransition2.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image2_transition_rotate_r, currentYOffset)}deg)`
@@ -213,9 +211,7 @@
                     objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image3_transition_rotate_r, currentYOffset)}deg)`
 
                     objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image4_transition_rotate_r, currentYOffset)}deg)`
-
-                }else if(scrollRatio >0.25 && scrollRatio <= 0.53 ){
-
+                }else if(scrollRatio > 0.15 && scrollRatio <= 0.32){
                     //이미지1
                     objs.imageTransition1.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(-${calcValues(values.image1_transition_rotate_l, currentYOffset)}deg)`
                     //이미지2
@@ -224,11 +220,8 @@
                     objs.imageTransition3.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image3_transition_rotate_l, currentYOffset)}deg)`
                     // 이미지
                     objs.imageTransition4.style.transform = `translate3d(${calcValues(values.image_transform_center, currentYOffset)}%,${-calcValues(values.image_transform_center, currentYOffset)}%,0) rotate(${calcValues(values.image4_transition_rotate_l, currentYOffset)}deg)`
-                }else {
-                    objs.subMessage.style.opacity = '0'
                 }
-
-                if(scrollRatio <= 0.54){
+                if(scrollRatio <= 0.32){
                     objs.imageTransition1.style.top = `${calcValues(values.image1_transition_top, currentYOffset)}%`
 
                     objs.imageTransition1.style.right = `${calcValues(values.image1_transition_right, currentYOffset)}%`
@@ -245,14 +238,18 @@
 
                     objs.imageTransition4.style.right = `${calcValues(values.image4_transition_right, currentYOffset)}%`
 
-                    document.querySelector('.intro-wrap').classList.remove('intro-show')
+                    objs.subMessage.style.opacity = calcValues(values.subMessage_opacity, currentYOffset);
 
-                }else if (scrollRatio >0.54 && scrollRatio <= 0.99){
-                    // objs.imageTransition1.style.opacity = calcValues(values.image1_opacity, currentYOffset);
-                    document.querySelector('.intro-wrap').classList.add('intro-show')
-
-                    objs.imagetransY.style.top = `${calcValues(values.image_transition_Y, currentYOffset)}%`
+                }else{
+                    objs.subMessage.style.opacity = '0'
                 }
+                if(scrollRatio >= 0.5){
+                    document.querySelector('.intro-wrap').classList.add('intro-show')
+                    objs.imagetransY.style.top = `${calcValues(values.image_transition_Y, currentYOffset)}%`    
+                }else{
+                    document.querySelector('.intro-wrap').classList.remove('intro-show')
+                }
+
 
                 if(scrollRatio <= 0.7){
                     objs.centerMessage.style.opacity = calcValues(values.centerMessage_opacity_in, currentYOffset);
@@ -313,25 +310,25 @@
                 if(scrollRatio < 0.4){
                     objs.sec3_mac.style.opacity = '0'
                 }
-                if(scrollRatio >= 0.4 && scrollRatio <= 0.52 ){
+                if(scrollRatio >= 0.4 && scrollRatio <= 0.6 ){
                     objs.sec3_mac.style.opacity = calcValues(values.sec3_mac_opacity, currentYOffset)
                     objs.react.classList.add('display')
                 }else  {
                     objs.react.classList.remove('display')
 
                 }
-                if(scrollRatio >= 0.6) {
+                if(scrollRatio >= 0.62) {
                     objs.tablet_container.classList.add('tablet-show')
                 }else {
                     objs.tablet_container.classList.remove('tablet-show')
                 }
-                if(scrollRatio >= 0.6 && scrollRatio <= 0.7) {
+                if(scrollRatio >= 0.6 && scrollRatio <= 0.8) {
                     objs.standard.classList.add('display')
                 }else {
                     // objs.tablet_container.classList.remove('tablet-show')
                     objs.standard.classList.remove('display')
                 }
-                if(scrollRatio >= 0.75){
+                if(scrollRatio >= 0.8){
                     objs.tablet_img.style.top = `${calcValues(values.tablet_img_translateY, currentYOffset)}%`
                     objs.responsive.classList.add('display')
                 }else{
