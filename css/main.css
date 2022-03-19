@@ -12,9 +12,9 @@ body {
 	background: #171717;
 	height: 10000px;
 }
-/* .container{
-	overflow-x: hidden;
-} */
+body.before-load {
+    overflow: hidden;
+}
 a {
 	color: white;
 	text-decoration: none;
@@ -43,6 +43,52 @@ header .global-nav{
 .nav ul > li {
 	margin-left: 7vw;
 }
+
+/* loading */
+.loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	background: white;
+	opacity: 0;
+	transition: 0.5s;
+}
+.before-load .container {
+    display: none;
+}
+.before-load .loading {
+	opacity: 1;
+}
+@keyframes loading-spin {
+	100% { transform: rotate(360deg); }
+}
+@keyframes loading-circle-ani {
+	0% { stroke-dashoffset: 157; }
+	75% { stroke-dashoffset: -147; }
+	100% { stroke-dashoffset: -157; }
+}
+.loading-circle {
+	width: 54px;
+	height: 54px;
+	animation: loading-spin 3s infinite;
+}
+.loading-circle circle {
+	stroke: black;
+	stroke-width: 4;
+	/* getTotalLength()로 stroke의 길이를 얻어올 수 있음 */
+	stroke-dasharray: 157, 157;
+	stroke-dashoffset: 0;
+	fill: transparent;
+	animation: loading-circle-ani 1s infinite;
+	/* transition: 1s; */
+}
+
 
 /* section1 */
 
@@ -337,16 +383,52 @@ header .global-nav{
 }
 .sec3-info{
 	position: absolute;
-	left: 0;
-	padding-left: 5rem;
+    left: 0;
+	top: 50%;
+    transform: translateY(-50%);
+    padding-left: 5rem;
+    width: 25%;
 }
+
+.sec3-info-react,
+.sec3-info-standard,
+.sec3-info-responsive{
+	position: absolute;
+	transform: translateY(-40%);
+	transition: all 2s;
+	opacity: 0;
+} 
+.title {
+	font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.content {
+	line-height: 23px;
+}
+
+.display {
+	transform: translateY(-50%);
+	opacity: 1;
+}
+
 .tablet-container {
 	width: 560px;
 	height: 370px;
 	position: absolute;
 	right: 10%;
 	bottom: 7%;
+	transform: translateX(25%);
+	opacity: 0;
+	transition: all 2s;
 }
+
+.tablet-container.tablet-show{
+	opacity: 1;
+	transform: translateX(0);
+}
+
 .tablet-container > img {
 	position: absolute;
 	z-index: 1;
@@ -364,7 +446,7 @@ header .global-nav{
 	position: absolute;
 }
 .content-img > img:nth-child(2){
-	top: 80%
+	top: 100%
 }
 
 /* section4 */
@@ -377,6 +459,17 @@ header .global-nav{
     align-items: center;
     justify-content: space-between;
     height: 100vh;
+	padding-right: 10rem;
+}
+.contact > h1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+    right: 0;
+    text-align: center;
+    margin: 5.5rem 0;
+    font-size: 3rem;
+    text-transform: uppercase;
 }
 
 .sec4-title{
@@ -416,13 +509,21 @@ header .global-nav{
 .contact{
 	position: relative;
 	z-index: 9;
+	opacity: 0;
+	transform: translateX(33%);
+	transition: all 1.5s;
+}
+
+.contact.contact-show{
+	opacity: 1;
+	transform: translateX(0%);
 }
 .contact-contents{
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    width: 70%;
 }
 .contact__inputs{
 	display: flex;

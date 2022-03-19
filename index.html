@@ -11,7 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="before-load">
+    <div class="loading">
+		<svg class="loading-circle">
+			<circle cx="50%" cy="50%" r="25"></circle>
+		</svg>
+	</div>
     <header> 
         <nav class="global-nav">
             <a class="logo" href="#">timeframe</a>
@@ -92,9 +97,17 @@
                     </div>
                     <div class="sec3-mac"></div>
                     <div class="sec3-info">
-                        <div class="sec3-info react">
-                            <div class="title">title</div>
-                            <p class="content">content</p>
+                        <div class="sec3-info-react">
+                            <div class="title">react</div>
+                            <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, quaerat ad. Et natus officia odio quibusdam quisquam sit culpa, quia unde sequi possimus, blanditiis nesciunt voluptate praesentium distinctio facilis nisi?</p>
+                        </div>
+                        <div class="sec3-info-standard">
+                            <div class="title">web standard</div>
+                            <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, quaerat ad. Et natus officia odio quibusdam quisquam sit culpa, quia unde sequi possimus, blanditiis nesciunt voluptate praesentium distinctio facilis nisi?</p>
+                        </div>
+                        <div class="sec3-info-responsive">
+                            <div class="title">responsive</div>
+                            <p class="content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, quaerat ad. Et natus officia odio quibusdam quisquam sit culpa, quia unde sequi possimus, blanditiis nesciunt voluptate praesentium distinctio facilis nisi?</p>
                         </div>
                     </div>
                 </div>
@@ -119,6 +132,7 @@
                 </div>
                 <div class="contact">
                     <img src="./img/iphone-H2.png"/>
+                    <h1>contact me</h1>
                     <div class="contact-contents">
                         <form action="" class="contact__form">
                             <div class="contact__inputs">

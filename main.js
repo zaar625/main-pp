@@ -1,5 +1,6 @@
 //스크롤 이벤트
 (()=>{
+    // debugger;
     let yOffset = 0; 
     let prevScrollHeight = 0;
     let currentScene = 0;
@@ -15,7 +16,7 @@
         {
             //section1
             scrollHeight:0,
-            heightNum:4,
+            heightNum:6,
             objs:{//조작할 돔 객체 모음
                 container: document.querySelector(".section1"),
                 centerMessage: document.querySelector('.section1-wrap .Main-title'),
@@ -57,7 +58,7 @@
 
                 image_transform_center:[0,50,{start:0,end:0.5}],
                 
-                image_transition_Y:[100,0,{start:0.6,end:0.9}]
+                image_transition_Y:[100,0,{start:0.6,end:0.95}]
             }
         },
         {
@@ -98,15 +99,19 @@
                 sec3_bg:document.querySelector('.sec3-bg'),
                 // sec3_pad:document.querySelector('.sec3-pad'),
                 // sec3_iphone:document.querySelector('.sec3-iphone'),
-                sec3_mac:document.querySelector('.sec3-mac')
+                sec3_mac:document.querySelector('.sec3-mac'),
+                tablet_container:document.querySelector('.tablet-container'),
+                tablet_img: document.querySelector('.content-img > img:nth-child(2)'),
+                react: document.querySelector('.sec3-info-react'),
+                standard: document.querySelector('.sec3-info-standard'),
+                responsive: document.querySelector('.sec3-info-responsive'),
+                
             },
             values:{
                 sec3_bg_scale:[3.75,1,{start:0.3, end: 0.4}],
                 sec3_bg_translateY:[0,-11,{start:0.3, end: 0.4}],
-                sec3_mac_opacity:[0,1,{start:0.4, end: 0.5}],
-                sec3_pad_translateX:[-35, 85, {start:0.5, end: 0.6}],
-                sec3_iphone_translateY:[55, 30, {start:0.65, end: 0.7}],
-                
+                sec3_mac_opacity:[0,1,{start:0.42, end: 0.5}],
+                tablet_img_translateY:[100, 0, {start:0.76, end: 0.9}]
             }
         },
         {
@@ -129,7 +134,6 @@
             sectionInfo[1].objs.videoImages.push(imgElem);
         }
         // console.log(sectionInfo[1].objs.videoImages)
-        console.log(imgElem)
     }
     setCanvasImage();
 
@@ -140,7 +144,6 @@
             sectionInfo[i].objs.container.style.height = `${sectionInfo[i].scrollHeight}px`;
         }
         yOffset = window.pageYOffset;
-
         // 현재 보고있는 scene
         let totalScrollHeight = 0;
 		for (let i = 0; i < sectionInfo.length; i++) {
@@ -196,7 +199,7 @@
         const currentYOffset = yOffset - prevScrollHeight;
         const scrollHeight = sectionInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight;
-        console.log(scrollRatio,currentScene )
+        // console.log(scrollRatio,currentScene )
         switch(currentScene){
             case 0:
                 if(scrollRatio <=0.25){
@@ -243,14 +246,14 @@
                     objs.imageTransition4.style.right = `${calcValues(values.image4_transition_right, currentYOffset)}%`
 
                     document.querySelector('.intro-wrap').classList.remove('intro-show')
-                    
-                }else if (scrollRatio >0.54 && scrollRatio <= 0.92){
+
+                }else if (scrollRatio >0.54 && scrollRatio <= 0.99){
                     // objs.imageTransition1.style.opacity = calcValues(values.image1_opacity, currentYOffset);
                     document.querySelector('.intro-wrap').classList.add('intro-show')
 
                     objs.imagetransY.style.top = `${calcValues(values.image_transition_Y, currentYOffset)}%`
                 }
-            
+
                 if(scrollRatio <= 0.7){
                     objs.centerMessage.style.opacity = calcValues(values.centerMessage_opacity_in, currentYOffset);
                     objs.centerMessage.style.transform = `translate3d(${calcValues(values.centerMessage_translateX_in, currentYOffset)}%, 0, 0)`;
@@ -290,32 +293,64 @@
                 if(scrollRatio >= 0.84){
                     document.querySelector('.react-box').classList.add('reactshow');
                     document.querySelector('.vue-box').classList.add('vueshow');
+                }else {
+                    document.querySelector('.react-box').classList.remove('reactshow');
+                    document.querySelector('.vue-box').classList.remove('vueshow');
                 }
 
                 if(scrollRatio >=0.63 && scrollRatio <= 0.9){
                     let sequence = Math.floor(calcValues(values.imageSequence, currentYOffset));
                     // console.log(sequence)
                     objs.context.drawImage(objs.videoImages[sequence],0,0)
-                }else if(scrollRatio >= 0.98) {
-                    document.querySelector('.react-box').classList.remove('reactshow');
-                    document.querySelector('.vue-box').classList.remove('vueshow');
                 }
 
                 break;
+
             case 2:    
                 if(scrollRatio >= 0.3){
                     objs.sec3_bg.style.transform = `translateY(${calcValues(values.sec3_bg_translateY, currentYOffset)}px) scale(${calcValues(values.sec3_bg_scale, currentYOffset)})`
                 }
-                if(scrollRatio >= 0.38 && scrollRatio <= 0.52 ){
+                if(scrollRatio < 0.4){
+                    objs.sec3_mac.style.opacity = '0'
+                }
+                if(scrollRatio >= 0.4 && scrollRatio <= 0.52 ){
                     objs.sec3_mac.style.opacity = calcValues(values.sec3_mac_opacity, currentYOffset)
+                    objs.react.classList.add('display')
+                }else  {
+                    objs.react.classList.remove('display')
+
+                }
+                if(scrollRatio >= 0.6) {
+                    objs.tablet_container.classList.add('tablet-show')
+                }else {
+                    objs.tablet_container.classList.remove('tablet-show')
+                }
+                if(scrollRatio >= 0.6 && scrollRatio <= 0.7) {
+                    objs.standard.classList.add('display')
+                }else {
+                    // objs.tablet_container.classList.remove('tablet-show')
+                    objs.standard.classList.remove('display')
+                }
+                if(scrollRatio >= 0.75){
+                    objs.tablet_img.style.top = `${calcValues(values.tablet_img_translateY, currentYOffset)}%`
+                    objs.responsive.classList.add('display')
+                }else{
+                    objs.responsive.classList.remove('display')
                 }
                 break;
+
             case 3: 
             if(scrollRatio >= 0.3){
                 document.querySelector('.animation-title > span:first-child').classList.add('sec4-show2')
+                document.querySelector('.contact').classList.add('contact-show')
                 for(let i = 0; i < document.querySelectorAll('.rotate').length; i ++)
                 document.querySelectorAll('.rotate')[i].classList.add('sec4-show1')
                 // console.log(document.querySelectorAll('.rotate'))
+            }else{
+                document.querySelector('.animation-title > span:first-child').classList.remove('sec4-show2')
+                for(let i = 0; i < document.querySelectorAll('.rotate').length; i ++)
+                document.querySelectorAll('.rotate')[i].classList.remove('sec4-show1')
+                document.querySelector('.contact').classList.remove('contact-show')
             }
         }
 
@@ -357,20 +392,23 @@
 		}
     }
 
-    window.addEventListener('load',()=>{
-        // debugger;
-        yOffset = window.pageYOffset;
+    window.addEventListener('load', ()=>{
         setLayout();
+        setTimeout(()=>{
+            document.body.classList.remove('before-load');
+        },1500)
+        setLayout();
+
         //캔번스 미리 그리기
         sectionInfo[1].objs.context.drawImage(sectionInfo[1].objs.videoImages[0], 0, 0);
-        
+
         // 중간에서 새로고침 했을 경우 자동 스크롤로 제대로 그려주기
         let tempYOffset = yOffset;
         let tempScrollCount = 0;
         if (tempYOffset > 0) {
             //setintervalId
             let siId = setInterval(() => {
-                scrollTo(0, tempYOffset);
+                scrollTo(0, 0);
                 tempYOffset += 10;
 
                 if (tempScrollCount > 20) {
@@ -382,15 +420,19 @@
         
         //scroll event
         window.addEventListener('scroll',()=>{
-            yOffset = parseInt(window.pageYOffset);
-            console.log(yOffset)
-        scrollLoop();
+
+            yOffset = window.pageYOffset;
+            scrollLoop();
 
             if (!rafState) {
                 rafId = requestAnimationFrame(loop);
                 rafState = true;
             }
         });
+        window.addEventListener('resize', setLayout)
+    
+        document.querySelector('.loading').addEventListener('transitionend', (e) => {
+            document.body.removeChild(e.currentTarget);
+        });
     })
-    window.addEventListener('resize', setLayout)
 })();
