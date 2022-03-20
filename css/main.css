@@ -3,6 +3,7 @@ html {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
 	scroll-behavior: smooth;
+
 }
 body {
 	/* min-width: 1024px; */
@@ -202,10 +203,13 @@ header .global-nav{
 	margin-right: 4rem;
 }
 .intro-wrap .intro-dec > h3{
-	font-size: 2.5rem;
+	font-size: 1.5rem;
 }
-.intro-wrap .intro-dec > p {
+.intro-wrap .intro-dec  p {
 	line-height: 23px;
+}
+.intro-dec span{
+	background-color: rgb(109, 39, 39);
 }
 
 
@@ -226,9 +230,48 @@ header .global-nav{
 	margin-top: 2rem;
 }
 
+.btn-box{
+	margin-top: 40px;
+}
+.btn-box span { 
+	margin-right: 3rem;
+}
+.btn-box a {
+	color: white;
+    text-decoration: none;
+    margin-right: 16px;
+    position: absolute;
+	right: 0;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+	z-index: 1;
+}
+.btn-box a::before{
+	content: '';
+    position: absolute;
+    width: 0%;
+    height: calc(100% - 1rem);
+    background-color: #efefef;
+    transition: all .3s ease-in-out;
+    z-index: -1;
+    left: 0;
+}
+i {
+	margin-left: 10px;
+}
+
+.btn-box a:hover::before{
+	width: 100%;
+}
+.btn-box a:hover{
+	color: black;
+}
+
 .section2 .sec2-sticky{
 	position: sticky;
 	top:0%;
+	z-index: 99;
 }
 .section2-wrap {
 	display: flex;
@@ -265,6 +308,7 @@ header .global-nav{
 	width: 25%;
 	opacity: 0;
 	transition: all 2s;
+	line-height: 23px ;
 }
 .section2-wrap .react-box.reactshow{
 	opacity: 1;
@@ -295,6 +339,7 @@ header .global-nav{
 	width: 25%;
 	opacity: 0;
 	transition: all 2s;
+	line-height: 23px ;
 }
 .section2-wrap .vue-box.vueshow{
 	opacity: 1;
@@ -316,11 +361,15 @@ header .global-nav{
 }
 
 /*section3 */
+.section3{
+	line-height: 23px ;
+}
 .sec-sticky{
 	height: 100vh;
 	position: sticky;
 	top: 0;
 	overflow: hidden;
+	z-index: 99;
 }
 .sec3-bg{
 	transform:scale(3.75);
@@ -404,6 +453,7 @@ header .global-nav{
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 25px;
+	white-space: nowrap;
 }
 .content {
 	line-height: 23px;
