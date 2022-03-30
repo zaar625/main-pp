@@ -155,8 +155,8 @@
         }
         //캔버스 반응형
         const heightRatio = window.innerWidth /1000;
-        // console.log(window.innerHeight, window.innerWidth)
-        // console.log(heightRatio)
+        console.log(window.innerHeight, window.innerWidth)
+        console.log(heightRatio)
         if(heightRatio < 0.8){
             sectionInfo[1].objs.canvas.style.transform = `scale(${heightRatio})`
         }else {
@@ -257,11 +257,12 @@
                 }else{
                     objs.centerMessage.style.opacity = '0'
                 }
+                if(scrollRatio <= 0.8){
+                    document.querySelector('.introImage-wrap').style.opacity = '1'
+                }
                 if(scrollRatio >= 0.99){
                     document.querySelector('.intro-wrap').classList.remove('intro-show')
-                    document.querySelector('.introImage-wrap').style.display = 'none'
-                }else{
-                    document.querySelector('.introImage-wrap').style.display = 'block'
+                    document.querySelector('.introImage-wrap').style.opacity = '0'
                 }
                 break;
 

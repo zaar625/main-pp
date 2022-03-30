@@ -1,7 +1,7 @@
 
 html {
 	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 14px;
+	font-size: 16px;
 	scroll-behavior: smooth;
 
 }
@@ -25,7 +25,7 @@ header{
 	position: fixed;
 	width: 100%;
 	top: 15px;
-	z-index: 10;
+	z-index: 100;
 }
 header .global-nav{
 	max-width: 90%;
@@ -102,14 +102,29 @@ header .global-nav{
 .section1-wrap > h1{
 	font-size: 7vw;
 	white-space: nowrap;
+	animation: title 0.8s ease-out;
+}
+
+@keyframes title {
+	0% { 	
+		opacity: 0; 
+		
+		transform: translate(500px,100px) ;
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0,0) ;
+	}
 }
 .section1-wrap > p {
 	margin-top: 50px;
 }
 .section1 > p {
 	position: fixed;
-	left: 0;
-	bottom: 10px;
+    left: 0;
+    bottom: 10px;
+    font-size: 0.5rem;
+    opacity: 0.7;
 }
 .introImage-wrap > div{
 	width: 332px;
@@ -125,25 +140,36 @@ header .global-nav{
 	/* transform: translate(50%,-50%); */
 	z-index: 3;
 	background-image: url('../img/movieImage.png');	
+	animation: scale 1s ease-in-out; 
+}
+@keyframes scale {
+	0% { transform: scale(0.5); }
+	100% { transform: scale(1); }
+}
+@keyframes scale2 {
+	0% { transform: scale(0); }
+	100% { transform: scale(1); }
 }
 .introImage-wrap .sec1-image2{
 	background-image: url('../img/image47.png');	
 	top: 38%;
 	right: 0;
 	z-index: 4;
-
+	animation: scale 1s ease-in-out; 
 }
 .introImage-wrap .sec1-image3{
 	background-image: url('../img/image44.png');	
 	right: 20%;
     top: 20%;
 	z-index: 2;
+	animation: scale2 1.5s ease-in-out; 
 }
 .introImage-wrap .sec1-image4{
 	background-image: url('../img/image45.png');	
 	right: 13%;
     top: 48%;
     z-index: 3;
+	animation: scale2 1.5s ease-in-out; 
 	
 }
 .iphoneImage-sticky{
@@ -187,7 +213,7 @@ header .global-nav{
 	justify-content: space-between;
 	align-items: center;
 	opacity: 0;
-	transition: all 2s;
+	transition: all 0.7s;
 }
 .intro-wrap > h1 {
 	font-size: 5vw;
@@ -199,17 +225,17 @@ header .global-nav{
 	opacity: 1;
 }
 .intro-wrap .intro-dec{
-	width: 20%;
+	width: 23%;
 	margin-right: 4rem;
 }
 .intro-wrap .intro-dec > h3{
 	font-size: 1.5rem;
 }
 .intro-wrap .intro-dec  p {
-	line-height: 23px;
+	line-height: 25px;
 }
 .intro-dec span{
-	background-color: rgb(109, 39, 39);
+	border-bottom: solid 2px #b27676;
 }
 
 
@@ -229,7 +255,9 @@ header .global-nav{
 	background-color: #000;
 	margin-top: 2rem;
 }
-
+.story-box{
+	margin-bottom: 10px;
+}
 .btn-box{
 	margin-top: 40px;
 }
@@ -240,8 +268,6 @@ header .global-nav{
 	color: white;
     text-decoration: none;
     margin-right: 16px;
-    position: absolute;
-	right: 0;
     padding: 0.5rem;
     font-size: 1.25rem;
     text-transform: uppercase;
@@ -272,11 +298,17 @@ i {
 	position: sticky;
 	top:0%;
 	z-index: 99;
+	height: 100vh;
 }
 .section2-wrap {
 	display: flex;
     justify-content: center;
     position: relative;
+	width: 100%;
+	height: 100%;
+}
+.section2-wrap canvas {
+	object-fit: contain;
 }
 .section2-wrap .sec2-main-tit{
 	display: flex;
@@ -291,12 +323,12 @@ i {
 	margin-bottom: 10px;
 }
 .section2-wrap .sec2-main-tit h3{
-	font-size: 1.5vw;
+	font-size: 2.85rem;
 	color: #A1A1A1;
 	opacity: 0;
 }
 .section2-wrap .sec2-main-tit h1{
-	font-size: 2.5vw;
+	font-size: 3.5rem;
 	opacity: 0;
 }
 .section2-wrap .react-box{
@@ -305,7 +337,7 @@ i {
 	top:35vh;
 	display: flex;
 	flex-direction: column;
-	width: 25%;
+	width: 23%;
 	opacity: 0;
 	transition: all 2s;
 	line-height: 23px ;
@@ -336,7 +368,7 @@ i {
 	top:55vh;
 	display: flex;
 	flex-direction: column;
-	width: 25%;
+	width: 23%;
 	opacity: 0;
 	transition: all 2s;
 	line-height: 23px ;
@@ -444,19 +476,21 @@ i {
 .sec3-info-standard,
 .sec3-info-responsive{
 	position: absolute;
-	transform: translateY(-40%);
-	transition: all 2s;
-	opacity: 0;
+    transform: translateY(-40%);
+    transition: all 1s;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
 } 
 .title {
-	font-size: 3rem;
+	font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 25px;
 	white-space: nowrap;
 }
 .content {
-	line-height: 23px;
+	line-height: 25px;
 }
 
 .display {
@@ -668,9 +702,10 @@ i {
 		position: fixed;
 	}
 	.intro-wrap .intro-dec {
-		width: 52%;
+		width: 80%;
 		margin-right: 0rem;
 		background-color: #09090985;
+
 	}
 	.intro-wrap .intro-dec > h3 {
 		font-size: 1.5rem;
@@ -686,13 +721,14 @@ i {
 	}
 	.section2-wrap .react-box {
 		position: absolute;
-		left: 5%;
+		left: 0%;
 		top: 15vh;
 		display: flex;
 		flex-direction: column;
-		width: 40%;
+		width: 100%;
 		opacity: 0;
 		transition: all 2s;
+		padding: 0.5rem;
 	}
 	.section2-wrap .react-box.reactshow {
 		opacity: 1;
@@ -701,13 +737,14 @@ i {
 
 	.section2-wrap .vue-box {
 		position: absolute;
-		right: 5%;
+		right: 0%;
 		top: 66vh;
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 100%;
 		opacity: 0;
 		transition: all 2s;
+		padding: 0.5rem;
 	}
 	.react-box > h2, .vue-box > h2 {
 		font-size: 1.5rem;
@@ -737,6 +774,19 @@ i {
 	.sec3-info  div {
 		left: 4%;
 	}
+	.sec3-info-react, .sec3-info-standard, .sec3-info-responsive {
+		position: absolute;
+		transform: translateY(-30%);
+		transition: all 1s;
+		opacity: 0;
+		display: flex;
+		flex-direction: column;
+		background: #09090985;
+	}
+	.display {
+		transform: translateY(-50%);
+		opacity: 1;
+	}
 	.tablet-container {
 		width: 560px;
 		height: 370px;
@@ -757,5 +807,16 @@ i {
 		height: 100vh;
 		padding-right: 0rem;
 		flex-direction: column;
+	}
+}
+
+@media all and (min-width:768px) and (max-width:1023px){ 
+	.intro-wrap .intro-dec {
+		width: 52%;
+		margin-right: 0rem;
+		background-color: #09090985;
+	}
+	.sec3-info-react, .sec3-info-standard, .sec3-info-responsive {
+		background: #09090985;
 	}
 }
