@@ -86,7 +86,7 @@ header .global-nav{
 .loading-circle {
 	width: 54px;
 	height: 54px;
-	animation: loading-spin 3s infinite;
+	animation: loading-spin 1.8s infinite;
 }
 .loading-circle circle {
 	stroke: black;
@@ -111,7 +111,7 @@ header .global-nav{
 .section1-wrap > h1{
 	font-size: 7vw;
 	white-space: nowrap;
-	animation: title 0.8s ease-out;
+	animation: title 0.5s ease-out;
 }
 
 @keyframes title {
@@ -132,7 +132,7 @@ header .global-nav{
 	position: fixed;
     left: 0;
     bottom: 10px;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     opacity: 0.7;
 }
 .introImage-wrap > div{
@@ -149,7 +149,7 @@ header .global-nav{
 	/* transform: translate(50%,-50%); */
 	z-index: 3;
 	background-image: url('../img/hero_image2.jpg');	
-	animation: scale 1s ease-in-out; 
+	animation: scale 0.8s ease-in-out; 
 }
 @keyframes scale {
 	0% { transform: scale(0.5); }
@@ -164,21 +164,21 @@ header .global-nav{
 	top: 38%;
 	right: 0;
 	z-index: 4;
-	animation: scale 1s ease-in-out; 
+	animation: scale 0.8s ease-in-out; 
 }
 .introImage-wrap .sec1-image3{
 	background-image: url('../img/hero_image3.jpg');	
 	right: 20%;
     top: 20%;
 	z-index: 2;
-	animation: scale2 1.5s ease-in-out; 
+	animation: scale2 1s ease-in-out; 
 }
 .introImage-wrap .sec1-image4{
 	background-image: url('../img/hero_image4.jpg');	
 	right: 13%;
     top: 48%;
     z-index: 3;
-	animation: scale2 1.5s ease-in-out; 
+	animation: scale2 1s ease-in-out; 
 	
 }
 .iphoneImage-sticky{
@@ -548,7 +548,8 @@ i {
 	display: flex;
 	flex-direction: column;
 	font-size: 7rem;
-	font-weight: 500;
+	font-weight: bold;
+	font-family: "Roboto";
 }
 .sec4-title  .rotate{
 	transform-style: preserve-3d;
