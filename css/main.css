@@ -1,10 +1,3 @@
-@font-face {
-    font-family: 'Yoonwoo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105@1.1/Yoonwoo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 16px;
@@ -148,7 +141,7 @@ header .global-nav{
 	right: 8%;
 	/* transform: translate(50%,-50%); */
 	z-index: 3;
-	background-image: url('../img/hero_image2.jpg');	
+	background-image: url('../img/hero_image2.webp');	
 	animation: scale 0.8s ease-in-out; 
 }
 @keyframes scale {
@@ -160,21 +153,21 @@ header .global-nav{
 	100% { transform: scale(1); }
 }
 .introImage-wrap .sec1-image2{
-	background-image: url('../img/hero_image1.jpg');	
+	background-image: url('../img/hero_image1.webp');	
 	top: 38%;
 	right: 0;
 	z-index: 4;
 	animation: scale 0.8s ease-in-out; 
 }
 .introImage-wrap .sec1-image3{
-	background-image: url('../img/hero_image3.jpg');	
+	background-image: url('../img/hero_image3.webp');	
 	right: 20%;
     top: 20%;
 	z-index: 2;
 	animation: scale2 1s ease-in-out; 
 }
 .introImage-wrap .sec1-image4{
-	background-image: url('../img/hero_image4.jpg');	
+	background-image: url('../img/hero_image4.webp');	
 	right: 13%;
     top: 48%;
     z-index: 3;
@@ -428,14 +421,14 @@ i {
 	position: relative;
 }
 .bg{
-	background-image: url('../img/screen1@3x.jpg');
+	background-image: url('../img/screen1@3x.webp');
 	width: 600px;
 	height: 400px;
 	background-size: contain;
 	background-repeat: no-repeat;
 }
 .sec3-mac{
-	background-image: url('../img/mac2.png');
+	background-image: url('../img/mac2.webp');
 	width: 740px;
     height: 452px;
     background-size: contain;
